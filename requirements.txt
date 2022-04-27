@@ -1,5 +1,5 @@
 yfinance
 tensorflow
-matplotlib.pyplot
+matplotlib
 pandas
 numpy

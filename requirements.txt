@@ -4,3 +4,4 @@ matplotlib
 pandas
 numpy
 pandas_datareader
+scikit-learn

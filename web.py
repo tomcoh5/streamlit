@@ -16,7 +16,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, LSTM
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 
-START = "2018-01-01"
+START = "2015-01-01"
 TODAY = "2019-01-01"
 #TODAY = date.today().strftime("%Y-%m-%d")
 stock = 'BTC-USD'

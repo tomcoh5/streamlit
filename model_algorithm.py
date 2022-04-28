@@ -144,16 +144,16 @@ def plot_regression_line(x, y, b):
         (h, c_prev) = tuple_in
              
         #input gate
-        i = self.input_gate(x*0.8 + b*2, h)
+        i = self.input_gate(x*0.8 + b*0.2, h)
 
         #forget gate
-        f = self.forget(x*0.8 + b*2, h)
+        f = self.forget(x*0.8 + b*0.2, h)
 
         #updating the cell memory
-        c_next = self.cell_memory_gate(i, f, x*0.8 + b*2, h,c_prev)
+        c_next = self.cell_memory_gate(i, f, x*0.8 + b*0.2, h,c_prev)
 
         #calculate the main output gate
-        o = self.out_gate(x*0.8 + b*2, h)
+        o = self.out_gate(x*0.8 + b*0.2, h)
 
 
         #produce next hidden output

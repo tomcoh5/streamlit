@@ -34,7 +34,7 @@ scaler = MinMaxScaler(feature_range=(0,1))
 scaled_data = scaler.fit_transform(data['Close'].values.reshape(-1,1))
 
 # how many days do we want to base our predictions on ?
-prediction_days = 30
+prediction_days = 1
 
 
 #split and reshape the data to fit the model input shape (3D)
@@ -89,7 +89,7 @@ model.fit(x_train,
 
 #takes new data and test on it
 START = "2019-01-01"
-TODAY = "2022-01-01"
+TODAY = "2022-04-29"
 test_data = load_data(stock)
 
 actual_prices = test_data['Close'].values

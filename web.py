@@ -127,7 +127,7 @@ plt.show()
 START = "2015-01-01"
 TODAY = date.today().strftime("%Y-%m-%d")
 
-st.title('BTC Forecast App')
+st.title('Forecast :)')
 
 
 # Plot Prediction

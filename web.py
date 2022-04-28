@@ -19,8 +19,8 @@ from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 START = "2015-01-01"
 TODAY = "2019-01-01"
 #TODAY = date.today().strftime("%Y-%m-%d")
-stock = 'ADA-USD'
-company = 'ADA-USD'
+stock = 'BTC-USD'
+company = 'BTC-USD'
 
 
 def load_data(ticker):
@@ -29,13 +29,15 @@ def load_data(ticker):
     return data
 
 data = load_data(stock)
-
+# small values for the model (network)
 scaler = MinMaxScaler(feature_range=(0,1))
 scaled_data = scaler.fit_transform(data['Close'].values.reshape(-1,1))
 
 # how many days do we want to base our predictions on ?
-prediction_days = 10
+prediction_days = 30
 
+
+#split and reshape the data to fit the model input shape (3D)
 x_train = []
 y_train = []
 
@@ -46,6 +48,7 @@ for x in range(prediction_days, len(scaled_data)):
 x_train, y_train = np.array(x_train), np.array(y_train)
 x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 
+#Neural Network with 3 lstm layers that excel in predicting sequential data
 def LSTM_model():
 
     model = Sequential()
@@ -65,6 +68,7 @@ def LSTM_model():
 
 model = LSTM_model()
 model.summary()
+#optimizing the model
 model.compile(optimizer='adam',
               loss='mean_squared_error')
 
@@ -75,12 +79,15 @@ checkpointer = ModelCheckpoint(filepath = 'weights_best.hdf5',
                                verbose = 2,
                                save_best_only = True)
 
+#train the model
 model.fit(x_train,
           y_train,
           epochs=25,
           batch_size = 32,
           callbacks = [checkpointer])
 
+
+#takes new data and test on it
 START = "2019-01-01"
 TODAY = "2022-01-01"
 test_data = load_data(stock)
@@ -127,7 +134,7 @@ plt.show()
 START = "2015-01-01"
 TODAY = date.today().strftime("%Y-%m-%d")
 
-st.title('Forecast :)')
+st.title('BTC Forecast App')
 
 
 # Plot Prediction
@@ -145,5 +152,3 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 st.pyplot(plot_prediction())
 
 #st.write(plot_prediction())
-
-

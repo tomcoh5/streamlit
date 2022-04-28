@@ -82,7 +82,7 @@ model.fit(x_train,
           callbacks = [checkpointer])
 
 START = "2019-01-01"
-TODAY = "2022-01-01"
+TODAY = "2023-01-01"
 test_data = load_data(stock)
 
 actual_prices = test_data['Close'].values

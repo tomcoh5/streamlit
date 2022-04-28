@@ -34,7 +34,7 @@ scaler = MinMaxScaler(feature_range=(0,1))
 scaled_data = scaler.fit_transform(data['Close'].values.reshape(-1,1))
 
 # how many days do we want to base our predictions on ?
-prediction_days = 30
+prediction_days = 90
 
 x_train = []
 y_train = []
@@ -77,7 +77,7 @@ checkpointer = ModelCheckpoint(filepath = 'weights_best.hdf5',
 
 model.fit(x_train,
           y_train,
-          epochs=25,
+          epochs=40,
           batch_size = 32,
           callbacks = [checkpointer])
 

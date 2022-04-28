@@ -34,7 +34,7 @@ scaler = MinMaxScaler(feature_range=(0,1))
 scaled_data = scaler.fit_transform(data['Close'].values.reshape(-1,1))
 
 # how many days do we want to base our predictions on ?
-prediction_days = 30
+prediction_days = 10
 
 x_train = []
 y_train = []

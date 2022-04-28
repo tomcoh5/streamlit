@@ -19,8 +19,8 @@ from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 START = "2015-01-01"
 TODAY = "2019-01-01"
 #TODAY = date.today().strftime("%Y-%m-%d")
-stock = 'LUNA-USD'
-company = 'LUNA-USD'
+stock = 'ADA-USD'
+company = 'ADA-USD'
 
 
 def load_data(ticker):
